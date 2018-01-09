@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="jquery.min.js"></script>
+</head>
+<body>
+    <input type="text" id="user">
+    <input type="text" id="pass">
+    <button id="btn">注册®️</button>
+    <button id="login">登录</button>
+    
+    <script>
+        $("#btn").click(function(){
+            console.log(1111)
+            $.ajax({
+                url: "http://localhost:8004/user/pan",
+                type: "POST",
+                data: {
+                    user: $("#user").val(),
+                    pass: $("#pass").val()
+                },
+                success: function (e) {
+                    console.log(e)
+                }
+            })
+        })
+        $("#login").click(function(){
+            $.ajax({
+                url:"http://localhost:8004/user/login",
+                type:"POST",
+                data: {
+                    user: $("#user").val(),
+                    pass: $("#pass").val()
+                },
+                success:function(e){
+                    console.log("登录成功");
+                }
+            })
+        })
+    </script>
+</body>
+</html>
